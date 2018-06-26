@@ -1,0 +1,14 @@
+.idea
+.DS_Store
+.cache
+*.csv
+*.xlsx
+*.jpg
+*.png
+*.model
+*.pyc
+*.pkl
+*.log
+*.zip
+*.bin
+
