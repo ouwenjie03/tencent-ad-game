@@ -27,16 +27,27 @@ vim src/args.py
 
 ## 文件夹说明 ##
 |-- data (存放数据文件)
+
 	|-- chusai (保存初赛的原始数据)
+
 	|-- fusai  (保存复赛的原始数据)
+
 	(data中下列的文件夹都是脚本自动生成)
+
 	|-- bin\_files (numpy保存格式)
+
 	|-- feature2idx (存放字典数据)
+
 	|-- infos (存放辅助用数据)
+
 |-- src  (所有代码文件,具体代码文件在下一部分介绍)
+
 	|-- logs (保存log输出文件)
+
 |-- models (保存pytorch模型)
+
 |-- result (保存结果文件)
+
 
 ---
 
