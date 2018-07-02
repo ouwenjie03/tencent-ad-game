@@ -9,6 +9,7 @@ import pandas as pd
 import os
 import sys
 
+from args import *
 from time import  time
 
 # usage: python combine_data.py [chusai/fusai] [train/test1/test2]
@@ -19,7 +20,7 @@ assert sys.argv[2] in ['train', 'test1', 'test2']
 is_train = 'train' in sys.argv[2]
 
 ad_feature_path = '../data/{}/adFeature.csv'.format(sys.argv[1])
-user_feature_path = '../data/{}/user_feature.data'.format(sys.argv[1])
+user_feature_path = '../data/{}/userFeature.data'.format(sys.argv[1])
 raw_path = '../data/{}/{}.csv'.format(sys.argv[1], sys.argv[2])
 
 ad_feature=pd.read_csv(ad_feature_path)
@@ -46,13 +47,13 @@ else:
     raw_data['label']=-1
 
 data=pd.merge(raw_data,ad_feature,on='aid',how='left')
-data=pd.merge(raw_data,user_feature,on='uid',how='left')
+data=pd.merge(data,user_feature,on='uid',how='left')
 data=data.fillna('-1')
 
 if sys.argv[1] == 'fusai':
-    raw_data.to_csv(args.root_data_path + '../data/combine_{}.csv'.format(sys.argv[2]), index=False)
+    data.to_csv(args.root_data_path + '../data/combine_{}.csv'.format(sys.argv[2]), index=False)
 else:
-    raw_data.to_csv(args.root_data_path + '../data/combine_{}_{}.csv'.format(sys.argv[1], sys.argv[2]), index=False)
+    data.to_csv(args.root_data_path + '../data/combine_{}_{}.csv'.format(sys.argv[1], sys.argv[2]), index=False)
 
 
 
